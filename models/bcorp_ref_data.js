@@ -1,0 +1,85 @@
+import _sequelize from 'sequelize';
+const { Model, Sequelize } = _sequelize;
+
+export default class bcorp_ref_data extends Model {
+  static init(sequelize, DataTypes) {
+  return super.init({
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
+    org_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    company_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    date_certified: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    industry: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    industry_category: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    country: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    city: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    sector: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    size: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    website: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    overall_score: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    assessment_year: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    }
+  }, {
+    sequelize,
+    tableName: 'bcorp_ref_data',
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
+  });
+  }
+}
