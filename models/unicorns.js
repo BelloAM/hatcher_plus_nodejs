@@ -1,13 +1,11 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class unicorns extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('unicorns', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     investor: {
       type: DataTypes.STRING(255),
@@ -32,5 +30,4 @@ export default class unicorns extends Model {
       },
     ]
   });
-  }
-}
+};

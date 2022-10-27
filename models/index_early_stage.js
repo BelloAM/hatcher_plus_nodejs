@@ -1,12 +1,10 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_early_stage extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_early_stage', {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     org_id: {
       type: DataTypes.INTEGER,
@@ -63,5 +61,4 @@ export default class index_early_stage extends Model {
       },
     ]
   });
-  }
-}
+};

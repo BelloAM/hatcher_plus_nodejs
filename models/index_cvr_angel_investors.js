@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_cvr_angel_investors extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_cvr_angel_investors', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -41,5 +38,4 @@ export default class index_cvr_angel_investors extends Model {
       },
     ]
   });
-  }
-}
+};

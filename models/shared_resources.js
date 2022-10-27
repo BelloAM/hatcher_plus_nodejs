@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class shared_resources extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('shared_resources', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -72,5 +69,4 @@ export default class shared_resources extends Model {
       },
     ]
   });
-  }
-}
+};

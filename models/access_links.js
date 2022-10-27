@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class access_links extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('access_links', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -71,7 +68,7 @@ export default class access_links extends Model {
   }, {
     sequelize,
     tableName: 'access_links',
-    timestamps: true,
+    timestamps: false,
     paranoid: true,
     indexes: [
       {
@@ -89,9 +86,6 @@ export default class access_links extends Model {
           { name: "recipient" },
         ]
       },
-    ],
-    createdAt:"created",
-    deletedAt:"deleted_at"
+    ]
   });
-  }
-}
+};

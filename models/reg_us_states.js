@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class reg_us_states extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('reg_us_states', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -80,5 +77,4 @@ export default class reg_us_states extends Model {
       },
     ]
   });
-  }
-}
+};

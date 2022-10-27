@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class activation_links extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('activation_links', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -40,7 +37,7 @@ export default class activation_links extends Model {
   }, {
     sequelize,
     tableName: 'activation_links',
-    timestamps: true,
+    timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
@@ -57,8 +54,6 @@ export default class activation_links extends Model {
           { name: "added" },
         ]
       },
-    ],
-    createdAt:"created_at"
+    ]
   });
-  }
-}
+};

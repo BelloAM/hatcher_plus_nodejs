@@ -1,13 +1,11 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class deal_stage_checklists_orgs extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('deal_stage_checklists_orgs', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     synd_id: {
       type: DataTypes.INTEGER,
@@ -44,5 +42,4 @@ export default class deal_stage_checklists_orgs extends Model {
       },
     ]
   });
-  }
-}
+};

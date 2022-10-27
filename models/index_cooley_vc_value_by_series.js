@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_cooley_vc_value_by_series extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_cooley_vc_value_by_series', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -45,5 +42,4 @@ export default class index_cooley_vc_value_by_series extends Model {
       },
     ]
   });
-  }
-}
+};

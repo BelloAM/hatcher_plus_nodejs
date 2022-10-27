@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class chart_of_accounts_custom extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('chart_of_accounts_custom', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -98,5 +95,4 @@ export default class chart_of_accounts_custom extends Model {
       },
     ]
   });
-  }
-}
+};

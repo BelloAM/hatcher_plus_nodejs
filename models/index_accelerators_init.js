@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_accelerators_init extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_accelerators_init', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -63,5 +60,4 @@ export default class index_accelerators_init extends Model {
       },
     ]
   });
-  }
-}
+};

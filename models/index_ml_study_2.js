@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_ml_study_2 extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_ml_study_2', {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -482,5 +479,4 @@ export default class index_ml_study_2 extends Model {
     tableName: 'index_ml_study_2',
     timestamps: false
   });
-  }
-}
+};

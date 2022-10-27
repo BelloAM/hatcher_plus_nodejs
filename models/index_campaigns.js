@@ -1,12 +1,10 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_campaigns extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_campaigns', {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     fund: {
       type: DataTypes.STRING(100),
@@ -79,5 +77,4 @@ export default class index_campaigns extends Model {
       },
     ]
   });
-  }
-}
+};

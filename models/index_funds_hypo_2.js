@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class index_funds_hypo_2 extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('index_funds_hypo_2', {
     return_mult: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -45,5 +42,4 @@ export default class index_funds_hypo_2 extends Model {
     tableName: 'index_funds_hypo_2',
     timestamps: false
   });
-  }
-}
+};

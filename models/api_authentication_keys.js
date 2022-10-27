@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class api_authentication_keys extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('api_authentication_keys', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -31,7 +28,7 @@ export default class api_authentication_keys extends Model {
   }, {
     sequelize,
     tableName: 'api_authentication_keys',
-    timestamps: true,
+    timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
@@ -41,8 +38,6 @@ export default class api_authentication_keys extends Model {
           { name: "id" },
         ]
       },
-    ],
-    createdAt:"date_created"
+    ]
   });
-  }
-}
+};

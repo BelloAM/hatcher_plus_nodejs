@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class org_metrics extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('org_metrics', {
     metrics_org_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -81,5 +78,4 @@ export default class org_metrics extends Model {
       },
     ]
   });
-  }
-}
+};

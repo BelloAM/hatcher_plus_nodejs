@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class password_resets extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('password_resets', {
     email: {
       type: DataTypes.STRING(255),
       allowNull: false
@@ -26,5 +23,4 @@ export default class password_resets extends Model {
       },
     ]
   });
-  }
-}
+};

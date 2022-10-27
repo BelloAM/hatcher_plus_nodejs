@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class org_profiles extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('org_profiles', {
     org_profile_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -152,5 +149,4 @@ export default class org_profiles extends Model {
       },
     ]
   });
-  }
-}
+};

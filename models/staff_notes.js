@@ -1,9 +1,6 @@
-import _sequelize from 'sequelize';
-const { Model, Sequelize } = _sequelize;
-
-export default class staff_notes extends Model {
-  static init(sequelize, DataTypes) {
-  return super.init({
+const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('staff_notes', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -132,5 +129,4 @@ export default class staff_notes extends Model {
     timestamps: false,
     paranoid: true
   });
-  }
-}
+};
