@@ -261,7 +261,8 @@ var _workflow_users = require("./workflow_users");
 var _workflows = require("./workflows");
 
 function initModels(sequelize) {
-  if(!sequelize) sequelize = new Sequelize(global.config.DB.default.database, global.config.DB.default.username, global.config.DB.default.password, global.config.DB.default);
+  let { database, host, dialect, user,password} = global.config.DB.default;
+  if(!sequelize) sequelize = new Sequelize(database, user, password, { host, dialect, pool:true});
   var access_links = _access_links(sequelize, DataTypes);
   var activation_links = _activation_links(sequelize, DataTypes);
   var api_authentication_keys = _api_authentication_keys(sequelize, DataTypes);

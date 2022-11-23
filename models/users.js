@@ -1,6 +1,13 @@
 const Sequelize = require('sequelize');
+let EncryptedField = require('sequelize-encrypted'),
+    EncryptionHandler = new (require('../handlers/encryptionHandler')),
+    enc_fields = EncryptedField(Sequelize,EncryptionHandler.getKey());
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
+    encrypted:enc_fields.vault("htc_vault",{
+       algorithm:global.config.DB.ENCRYPTION_ALGORITHM
+    }),
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -46,7 +53,8 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING(512),
       allowNull: false,
-      unique: "email"
+      unique: "email",
+      //encoding:"base64",
     },
     email_pending: {
       type: DataTypes.STRING(255),
@@ -381,17 +389,15 @@ module.exports = function(sequelize, DataTypes) {
     deleted_by: {
       type: DataTypes.INTEGER,
       allowNull: true
-    },
-    encrypted: {
-      type: DataTypes.TINYINT,
-      allowNull: false,
-      defaultValue: 0
     }
   }, {
     sequelize,
     tableName: 'users',
-    timestamps: false,
+    timestamps: true,
     paranoid: true,
+    createdAt:'date_created',
+    updatedAt:'updated',
+    deletedAt:'deleted_at',
     indexes: [
       {
         name: "PRIMARY",
