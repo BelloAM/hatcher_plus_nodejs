@@ -1,13 +1,10 @@
 const Sequelize = require('sequelize');
 let EncryptedField = require('sequelize-encrypted'),
     EncryptionHandler = new (require('../handlers/encryptionHandler')),
-    enc_fields = EncryptedField(Sequelize,EncryptionHandler.getKey());
+    enc_fields = EncryptedField(Sequelize,EncryptionHandler.getKey(),{algorithm:EncryptionHandler.getAlgorithm(),iv_length:EncryptionHandler.getIv().length});
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
-    encrypted:enc_fields.vault("htc_vault",{
-       algorithm:global.config.DB.ENCRYPTION_ALGORITHM
-    }),
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
